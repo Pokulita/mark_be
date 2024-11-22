@@ -110,7 +110,24 @@ def login():
     connection.close()
     return jsonify({"success": True, "token": token}), 200
 
+@app.route('/course', methods=['GET'])
+def get_user_courses():
+    tuser_id = request.args.get('user_id')
+    connection = get_db_connection()
+    cursor = connection.cursor()
 
+    print(tuser_id)
+    cursor.execute("SELECT * FROM courses"
+)  # Adjust with your actual table and columns
+    result = cursor.fetchall()
+
+    # Convert the result to a list of dictionaries
+    courses = [{"id": row[0], "name": row[1], "ects": row[2]} for row in result]
+
+    cursor.close()
+    connection.close()
+
+    return jsonify(courses)
 
 
 @app.route('/courses', methods=['GET'])
