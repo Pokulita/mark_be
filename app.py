@@ -1,6 +1,6 @@
 import datetime
 from flask import Flask, jsonify, request
-
+import os
 import psycopg2
 import bcrypt
 import jwt
@@ -158,4 +158,4 @@ def mark_course_passed():
     return jsonify({"success": True, "message": "Course marked as passed"}), 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
