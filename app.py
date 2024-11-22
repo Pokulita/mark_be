@@ -117,8 +117,7 @@ def get_user_courses():
     cursor = connection.cursor()
 
     print(tuser_id)
-    cursor.execute("SELECT * FROM courses"
-)  # Adjust with your actual table and columns
+    cursor.execute("SELECT * FROM courses")  # Adjust with your actual table and columns
     result = cursor.fetchall()
 
     # Convert the result to a list of dictionaries
