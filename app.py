@@ -111,7 +111,7 @@ def login():
     return jsonify({"success": True, "token": token}), 200
 
 @app.route('/course', methods=['GET'])
-def get_user_courses():
+def get_courses():
     tuser_id = request.args.get('user_id')
     connection = get_db_connection()
     cursor = connection.cursor()
