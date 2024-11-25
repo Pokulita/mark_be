@@ -140,6 +140,7 @@ def get_user_courses():
         FROM student_courses sc
         JOIN courses c ON c.id = sc.course_id
         WHERE sc.user_id = %s
+        ORDER BY c.id;
     """, (tuser_id,))# Adjust with your actual table and columns
     result = cursor.fetchall()
 
