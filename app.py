@@ -10,7 +10,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 # Apply CORS globally, allowing requests from your frontend's origin (localhost:3000)
-CORS(app, resources={r"/*": {"origins": "https://mark-fe.onrender.com"}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 def get_db_connection():
     connection = psycopg2.connect(
