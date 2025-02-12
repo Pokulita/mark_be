@@ -59,7 +59,7 @@ def register():
     for course in courses:
         course_id = course[0]
         cursor.execute(
-            "INSERT INTO student_courses (user_id, course_id, pass_status) VALUES (%s, %s, 0)",
+            "INSERT INTO student_courses (user_id, course_id, passed) VALUES (%s, %s, 0)",
             (user_id, course_id)
         )
     connection.commit()
@@ -136,7 +136,7 @@ def get_user_courses():
     cursor = connection.cursor()
 
     cursor.execute("""
-        SELECT c.id, c.name, c.ects, sc.pass_status 
+        SELECT c.id, c.name, c.ects, sc.passed 
         FROM student_courses sc
         JOIN courses c ON c.id = sc.course_id
         WHERE sc.user_id = %s
@@ -168,7 +168,7 @@ def mark_course_passed():
     # Update the 'passed' status of the course
     cursor.execute("""
         UPDATE student_courses
-        SET pass_status = 1
+        SET passed = 1
         WHERE user_id = %s AND course_id = %s
     """, (user_id, course_id))
     connection.commit()
