@@ -14,10 +14,10 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 def get_db_connection():
     connection = psycopg2.connect(
-        dbname="mymark",
+        dbname="mymark_28ui",
         user="pokulita",
-        password="99ZJSsxtv8DA38u0bCHmEvjXK9MAZErf",
-        host="dpg-ct07htm8ii6s73fiimc0-a.frankfurt-postgres.render.com",
+        password="PvIVPwLGu0isUX0qDoCZ4xOifeyvZJkV",
+        host="dpg-cumbko5umphs738gd54g-a.frankfurt-postgres.render.com",
         port="5432"
     )
     return connection
